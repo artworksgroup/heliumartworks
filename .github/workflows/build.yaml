@@ -6,19 +6,34 @@ on:
       - main
 
 jobs:
+  
   build:
-    runs-on: ubuntu-latest
+    
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14]
+    
     steps:
-      - uses: actions/checkout@v2
-      - name: Install Yarn
-        run: npm install -g yarn
-      - name: Install dependencies
-        run: yarn install
-      - name: Build
-        run: yarn build
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Setup node env
+        uses: actions/setup-node@v2.1.2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: .output
+          node-version: ${{ matrix.node }}
+      
+      - name: Install dependencies
+        run: yarn
+
+      - name: Generate
+        run: yarn generate
+
+
+      - name: Deploy with ${{ secrets.GITHUB_TOKEN }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
