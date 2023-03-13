@@ -8,6 +8,8 @@ export default defineNuxtConfig({
         '@nuxt/image-edge',
     ],
 
+    components : true,
+
     imports: {
         dirs: ['./stores'],
     },
@@ -33,6 +35,9 @@ export default defineNuxtConfig({
         langDir: 'lang/',
 
 
-    }
+
+    },
+
+    
 
 })
