@@ -1,7 +1,7 @@
 <template>
     <div class="p-4">
       <div class="text-xl">{{$t('hello')}} To man this happen abon Helium artworks nice {{ locale }} </div>
-      <button class="bg-teal-300 p-5">tailwind css test work now</button>
+      <button class="bg-teal-300 p-5">tailwind css test work now check</button>
     </div>
   </template>
   
