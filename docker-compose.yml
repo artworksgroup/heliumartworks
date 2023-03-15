@@ -1,8 +1,10 @@
-version: "3.9"
+version: '3.8'
 services:
-  my_nuxt_docker:
+  app:
     build: .
-    env_file:
-      - .env
+    image: artworks-app
+    container_name: helium-artworks-app
+    expose:
+      - "3000"
     ports:
       - "3000:3000"
