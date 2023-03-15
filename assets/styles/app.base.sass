@@ -1,0 +1,59 @@
+@import url('https://fonts.cdnfonts.com/css/space-grotesk')
+@import url('https://fonts.googleapis.com/css?family=Inter')
+
+@import ./app.colors
+@import ./app.vars
+@import ./utils/functions
+@import ./components/index
+
+html, body
+  height: 100%
+  overflow: hidden !important
+  &, & > *
+    -webkit-print-color-adjust: exact
+
+body
+  font-family: 'Space Grotesk', sans-serif
+  font-size: -var(body-fs)
+  font-weight: normal
+  font-style: normal
+  color: -color(on-background)
+  background-color: -color(background)
+  margin: 0
+  padding: 0
+
+  ::selection
+    color: -color(light)
+    background: -color(primary, .4) !important
+
+  .disable-selection
+    -webkit-user-select: none !important
+
+  button, .button
+    background-color: -color(primary, .25)
+
+    &.button--primary
+      background: -color(color)
+      color: -color(light)
+      transition: ease .3s
+
+      &:hover, &.active
+        box-shadow: -shadow(primary)
+        transform: translateY(-3px)
+        transition: ease .3s
+
+    &.button--flat
+      background: -color(background)
+
+    &.button--surface
+      background-color: -color(surface)
+
+  p
+    margin: 0
+
+  input
+    &:focus
+      border: none
+      outline: none
+
+  @import ./views/index

@@ -1,16 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-
   modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n", "@nuxt/image-edge"],
+
+  plugins: [],
+
+  css: [
+    "~/assets/styles/app.base.sass"
+  ],
 
   imports: {
     dirs: ["./stores"],
   },
   
-  router: {
+  /* router: {
     base: "heliumartworks", 
-  },
+  }, */
 
   i18n: {
     locales: [
@@ -29,10 +34,5 @@ export default defineNuxtConfig({
     ],},
 
     components : true,
-
-  
-    
-
-    
-
+    pages: true,
 })

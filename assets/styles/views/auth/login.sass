@@ -1,0 +1,92 @@
+$field_size: 58px
+$field_corner_radius: 50px
+$field_spacing: 10px
+
+#login-views
+  height: 100vh
+
+  .auth-form, .auth-gallery
+    @apply h-full
+
+  .auth-form
+    width: 40%
+    padding: 30px 5%
+
+    .head-texts
+      h1
+        font-size: 35px
+        font-weight: bold
+        line-height: 1.25
+        color: -color(on-surface)
+      p
+        font-size: -var(subtitle-fs)
+
+    .inputs, .actions, .google
+      .input, button
+        height: $field_size
+        border-radius: $field_corner_radius
+
+    .inputs .input, .google button
+      padding: 0 15px
+      background-color: -color(surface)
+
+    .inputs
+      padding: 35px 0 15px 0
+      .input
+        box-shadow: 0 0px 20px 10px -color(dark, .015)
+        @apply flex w-full items-center overflow-hidden
+        input
+          color: -color(on-surface)
+          @apply flex-1 h-full
+          &::placeholder
+            color: -color(on-background)
+        svg
+          margin-right: 10px
+          path
+            stroke: -color(on-background)
+
+        &:not(:last-of-type)
+          margin-bottom: $field_spacing
+
+    .actions
+      button
+        &.button--primary
+          padding: 0 25px
+          min-width: 35%
+
+    .sep
+      margin: 15px 0
+      position: relative
+      @apply flex items-center justify-center
+
+      &::before
+        content: ''
+        position: absolute
+        top: 50%
+        left: 0
+        transform: translateY(-50%)
+        height: 1px
+        width: 100%
+        background-color: -color(outline)
+        z-index: -1
+
+    .google
+      button
+        @apply flex items-center
+        svg
+          margin-right: 10px
+
+  .auth-gallery
+    background-color: -color(surface)
+    inset: 0
+
+    &::before, img
+      @apply absolute top-0 left-0 h-full w-full
+
+    &::before
+      content: ''
+      background-color: -color(dark, .15)
+      z-index: 1
+
+    img
+      object-fit: cover

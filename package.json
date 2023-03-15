@@ -17,6 +17,7 @@
     "sass-loader": "^13.2.0"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.4.7"
+    "@pinia/nuxt": "^0.4.7",
+    "focus_vuekit": "^0.1.67"
   }
 }
