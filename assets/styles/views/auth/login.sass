@@ -31,16 +31,19 @@ $field_spacing: 10px
       background-color: -color(surface)
 
     .inputs
-      padding: 35px 0 15px 0
+      padding: 0 0 15px 0
       .input
         box-shadow: 0 0px 20px 10px -color(dark, .015)
         @apply flex w-full items-center overflow-hidden
         input
+          background-color: transparent
           color: -color(on-surface)
           @apply flex-1 h-full
           &::placeholder
             color: -color(on-background)
         svg
+          height: 20px
+          width: 20px
           margin-right: 10px
           path
             stroke: -color(on-background)
@@ -55,9 +58,9 @@ $field_spacing: 10px
           min-width: 35%
 
     .sep
-      margin: 15px 0
+      margin: 25px 0
       position: relative
-      @apply flex items-center justify-center
+      @apply flex items-center
 
       &::before
         content: ''
@@ -65,14 +68,20 @@ $field_spacing: 10px
         top: 50%
         left: 0
         transform: translateY(-50%)
-        height: 1px
+        height: .5px
         width: 100%
         background-color: -color(outline)
         z-index: -1
 
+      p
+        background: -color(background)
+        padding: 0px 20px
+        font-size: -var(small-fs)
+
     .google
+      margin-top: 35px
       button
-        @apply flex items-center
+        @apply flex items-center self-start
         svg
           margin-right: 10px
 
