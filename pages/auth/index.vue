@@ -6,9 +6,7 @@
     >
       <AppLogo />
       <div class="head-texts mt-auto">
-        <h1>
-          Enter our world of photography and join the millions of creative.
-        </h1>
+        <h1>Join the millions of creative.</h1>
         <p>Join our community of photographers and creatives.</p>
       </div>
       <div class="google flex">
