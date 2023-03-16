@@ -16,8 +16,10 @@
     "@rushstack/eslint-patch": "^1.2.0",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.2",
+    "@vueuse/nuxt": "^9.13.0",
     "eslint": "^8.36.0",
     "nuxt": "^3.2.3",
+    "pinia": "^2.0.33",
     "push-dir": "^0.4.1",
     "sass": "^1.59.2",
     "sass-loader": "^13.2.0"
@@ -25,6 +27,10 @@
   "dependencies": {
     "@nuxtjs/color-mode": "^3.2.0",
     "@pinia/nuxt": "^0.4.7",
+    "firebase": "^9.17.2",
     "focus_vuekit": "^0.1.67"
+  },
+  "overrides": {
+    "vue": "latest"
   }
 }

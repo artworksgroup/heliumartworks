@@ -2,24 +2,25 @@
 
 export default defineNuxtConfig({
   pages: true,
-  components : true,
+
+  components: true,
+
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/i18n",
     "@nuxt/image-edge",
-    ['@nuxtjs/eslint-module', {
-      lintOnStart: false
-    }],
-    ['@nuxtjs/color-mode', {
-      preference: 'system', // default value of $colorMode.preference
-      fallback: 'light',
-      classSuffix: ''
-    }]
+    "@nuxtjs/eslint-module",
+    "@nuxtjs/color-mode",
+    "@pinia/nuxt",
+    "@vueuse/nuxt",
   ],
-  plugins: [],
-  css: [
-    "~/assets/styles/app.base.sass"
-  ],
+
+  imports: {
+    dirs: ["stores"],
+  },
+
+  css: ["~/assets/styles/app.base.sass"],
+
   i18n: {
     locales: [
       {
@@ -36,4 +37,14 @@ export default defineNuxtConfig({
       },
     ],
   },
-})
+
+  colorMode: {
+    preference: "system", // default value of $colorMode.preference
+    fallback: "light",
+    classSuffix: "",
+  },
+
+  eslint: {
+    lintOnStart: false,
+  },
+});
