@@ -1,0 +1,1 @@
+import{e as a,o as n,c as _,k as c,l as s,h as r,m}from"./entry.34e71dca.js";const l=a({__name:"dashboard",setup(p){const o="dashboard";return(u,d)=>{const t=m,e=s;return n(),_(e,{name:o},{default:c(()=>[r(t)]),_:1})}}});export{l as default};
