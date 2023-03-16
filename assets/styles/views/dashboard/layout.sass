@@ -1,0 +1,37 @@
+#Dashboard
+  height: 100vh
+  @apply flex overflow-hidden
+
+  .sidebar, .body
+    @apply h-full
+
+    .titlebar
+      height: 60px
+      @apply flex flex-row items-center
+
+  .sidebar
+    width: 23%
+    padding: 0 2%
+    background-color: -color(surface)
+
+    .profile
+      margin: 30px 0 50px
+      @apply flex items-center
+      .infos
+        margin-left: 10px
+        @apply flex-1
+
+    .nav
+      .nav-item
+        padding: 15px 0
+        @apply flex flex-row items-center
+        svg
+          margin-right: 20px
+          path
+            stroke: -color(on-background)
+
+  .body
+    @apply flex-1
+
+    .titlebar, .page
+      padding: 0 5%

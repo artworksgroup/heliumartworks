@@ -39,9 +39,11 @@ export const useAuthStore = defineStore("auth", () => {
   };
 
   const logout = () =>
-    signOut(firebase.auth).catch((error) => {
-      console.log(error);
-    });
+    signOut(firebase.auth)
+      .then(async () => await navigateTo("/fr/auth"))
+      .catch((error) => {
+        console.log(error);
+      });
 
   const listenToFirebaseAuthStateChanges = () =>
     onAuthStateChanged(firebase.auth, async (data: any) => {
@@ -49,7 +51,7 @@ export const useAuthStore = defineStore("auth", () => {
         accessToken.value = data.accessToken;
         refreshToken.value = data.refreshToken;
         user.value = new User(data.uid, data.email);
-        await navigateTo("dashboard");
+        await navigateTo("dashboard/profile");
       } else {
         await navigateTo("auth");
       }

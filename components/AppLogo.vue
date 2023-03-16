@@ -1,3 +1,3 @@
 <template>
-  <p class="logo">Helium artworks.</p>
+  <NuxtLink to="auth" class="logo">Helium artworks.</NuxtLink>
 </template>
