@@ -3,10 +3,7 @@
 export default defineNuxtConfig({
   pages: true,
 
-  components: [
-    { path: "~/components/icons", pathPrefix: false },
-    "~/components",
-  ],
+  components: true,
 
   modules: [
     "@nuxtjs/tailwindcss",
@@ -25,7 +22,6 @@ export default defineNuxtConfig({
   css: ["~/assets/styles/app.base.sass"],
 
   i18n: {
-    defaultLocale: "en",
     locales: [
       {
         code: "fr",

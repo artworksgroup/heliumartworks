@@ -16,9 +16,9 @@
           v-for="(link, i) in sidebarLinks"
           :key="i"
           class="nav-item"
-          :to="localePath(link.to)"
+          to="dashboard/profile"
         >
-          <Component :is="link.icon"></Component>
+          <iconCheck></iconCheck>
           <p class="label">{{ link.label }}</p>
         </NuxtLink>
       </div>
@@ -50,8 +50,44 @@
 </template>
 
 <script setup lang="ts">
-import { sidebarLinks } from "~/data/dashboard";
 import { useAuthStore } from "~/stores/repositories/auth";
 
+type SidebarLink = {
+  label: String;
+};
+
 const auth = useAuthStore();
+
+const sidebarLinks: Array<SidebarLink> = [
+  {
+    label: "home",
+  },
+  {
+    label: "Medias",
+  },
+  {
+    label: "Sells",
+  },
+  {
+    label: "Downloads",
+  },
+  {
+    label: "Profile",
+  },
+  {
+    label: "Settings",
+  },
+  {
+    label: "Users",
+  },
+  {
+    label: "Moderators",
+  },
+  {
+    label: "Tickets",
+  },
+  {
+    label: "Administration",
+  },
+];
 </script>

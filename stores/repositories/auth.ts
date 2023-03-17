@@ -51,10 +51,9 @@ export const useAuthStore = defineStore("auth", () => {
         accessToken.value = data.accessToken;
         refreshToken.value = data.refreshToken;
         user.value = new User(data.uid, data.email);
-
-        await navigateTo(localePath("/dashboard/profile"));
+        await navigateTo("dashboard/profile");
       } else {
-        await navigateTo(localePath("auth"));
+        await navigateTo("auth");
       }
     });
 
