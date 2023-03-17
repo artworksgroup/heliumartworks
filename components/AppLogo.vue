@@ -1,3 +1,3 @@
 <template>
-  <NuxtLink to="auth" class="logo">Helium artworks.</NuxtLink>
+  <NuxtLink :to="localePath('auth')" class="logo">Helium artworks.</NuxtLink>
 </template>

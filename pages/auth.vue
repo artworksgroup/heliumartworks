@@ -11,7 +11,7 @@
       </div>
       <div class="google flex">
         <button class="button button--surface flex-1 flex">
-          <IconGoogle />
+          <GoogleIcon />
           <span>Sign in with google.</span>
         </button>
       </div>
@@ -20,7 +20,7 @@
       </div>
       <div class="inputs w-full">
         <div class="input">
-          <IconSms />
+          <SmsIcon />
           <input
             v-model="userCredentials.email"
             type="text"
@@ -29,7 +29,7 @@
           />
         </div>
         <div class="input">
-          <IconCheck />
+          <CheckIcon />
           <input
             v-model="userCredentials.password"
             type="password"
