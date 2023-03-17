@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {},
+  },
+
   pages: true,
 
   components: [
@@ -16,6 +20,7 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@pinia/nuxt",
     "@vueuse/nuxt",
+    '@nuxtjs/stylelint-module',
   ],
 
   imports: {

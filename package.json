@@ -12,6 +12,7 @@
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/eslint-module": "^4.0.2",
     "@nuxtjs/i18n": "^8.0.0-beta.10",
+    "@nuxtjs/stylelint-module": "^5.0.1",
     "@nuxtjs/tailwindcss": "^6.4.1",
     "@rushstack/eslint-patch": "^1.2.0",
     "@vue/eslint-config-prettier": "^7.1.0",
@@ -22,7 +23,10 @@
     "pinia": "^2.0.33",
     "push-dir": "^0.4.1",
     "sass": "^1.59.2",
-    "sass-loader": "^13.2.0"
+    "sass-loader": "^13.2.0",
+    "stylelint": "^15.3.0",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-standard-scss": "^7.0.1"
   },
   "dependencies": {
     "@nuxtjs/color-mode": "^3.2.0",
