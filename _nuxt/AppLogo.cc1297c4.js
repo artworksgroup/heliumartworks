@@ -1,0 +1,1 @@
+import{_ as t}from"./nuxt-link.2e85cc81.js";import{_}from"./_plugin-vue_export-helper.c27b6911.js";import{o as e,c,k as n,x as r}from"./entry.d85976f5.js";const s={};function a(m,p){const o=t;return e(),c(o,{to:"auth",class:"logo"},{default:n(()=>[r("Helium artworks.")]),_:1})}const u=_(s,[["render",a]]);export{u as _};
