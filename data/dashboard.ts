@@ -6,11 +6,11 @@ export type SidebarLink = {
   to: RouteLocationRaw;
 };
 
-const sidebarLinks: Array<SidebarLink> = [
+const buildSidebarLinks = (): Array<SidebarLink> => [
   {
     to: "/dashboard/home",
     label: "home",
-    icon: resolveComponent("SmsIcon"),
+    icon: resolveComponent("GoogleIcon"),
   },
   {
     to: "dashboard-profile",
@@ -59,4 +59,4 @@ const sidebarLinks: Array<SidebarLink> = [
   },
 ];
 
-export { sidebarLinks };
+export { buildSidebarLinks };

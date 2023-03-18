@@ -5,112 +5,135 @@ $field_spacing: 10px;
 #login-views {
   height: 100vh;
 
-  .auth-form, .auth-gallery{
+  .auth-form,
+  .auth-gallery {
     @apply h-full;
   }
 
-  .auth-form{
+  .auth-form {
     width: 40%;
     padding: 30px 5%;
 
-    .head-texts{
-      h1{
+    .head-texts {
+      h1 {
         font-size: 45px;
         font-weight: 600;
         line-height: 1.25;
-        color: -color(on-surface);}
-      p{
-       font-size: -var(subtitle-fs);}
+        color: -color(on-surface);
       }
+      p {
+        font-size: -var(subtitle-fs);
+      }
+    }
 
-    .inputs, .actions, .google{
-      .input, button{
+    .inputs,
+    .actions,
+    .google {
+      .input,
+      button {
         height: $field_size;
-        border-radius: $field_corner_radius;}}
+        border-radius: $field_corner_radius;
+      }
+    }
 
-    .inputs .input, .google button{
+    .inputs .input,
+    .google button {
       padding: 0 15px;
-      background-color: -color(surface);}
+      background-color: -color(surface);
+    }
 
-    .inputs{
+    .inputs {
       padding: 0 0 15px 0;
-      .input{
-        box-shadow: 0 0px 20px 10px -color(dark, .015);
+      .input {
+        box-shadow: 0 0px 20px 10px -color(dark, 0.015);
         @apply flex w-full items-center overflow-hidden;
-        input{
+        input {
           background-color: transparent;
           color: -color(on-surface);
           @apply flex-1 h-full;
-          &::placeholder{
-            color: -color(on-background);}}
-        svg{
+          &::placeholder {
+            color: -color(on-background);
+          }
+        }
+        svg {
           height: 20px;
           width: 20px;
           margin-right: 10px;
-          path{
-            stroke: -color(on-background);}}
+          path {
+            stroke: -color(on-background);
+          }
+        }
 
         &:not(:last-of-type) {
           margin-bottom: $field_spacing;
-        }}
-}
-
-    .actions{
-      button{
-        &.button--flat{
-          padding: 0 15px;
-          background: -color(surface, .35);
         }
-        &.button--primary{
+      }
+    }
+
+    .actions {
+      button {
+        &.button--flat {
+          padding: 0 15px;
+          background: -color(surface, 0.35);
+        }
+        &.button--primary {
           padding: 0 25px;
           min-width: 35%;
         }
       }
     }
 
-    .sep{
+    .sep {
       margin: 25px 0;
       position: relative;
       @apply flex items-center;
 
-      &::before{
-        content: '';
+      &::before {
+        content: "";
         position: absolute;
         top: 50%;
         left: 0;
         transform: translateY(-50%);
-        height: .5px;
+        height: 0.5px;
         width: 100%;
         background-color: -color(outline);
-        z-index: -1;}
+        z-index: -1;
+      }
 
-      p{
+      p {
         background: -color(background);
         padding: 0px 20px;
-        font-size: -var(small-fs);}}
+        font-size: -var(small-fs);
+      }
+    }
 
-    .google{
+    .google {
       margin-top: 35px;
       button {
         @apply flex items-center self-start;
-        svg{
+        svg {
           margin-right: 10px;
         }
       }
     }
-}
-  .auth-gallery{
+  }
+  .auth-gallery {
     background-color: -color(surface);
     inset: 0;
 
-    &::before, img{
-      @apply absolute top-0 left-0 h-full w-full}
+    &::before,
+    img {
+      @apply absolute top-0 left-0 h-full w-full;
+    }
 
-    &::before{
-      content: '';
-      background-color: -color(dark, .15);
-      z-index: 1;}
+    &::before {
+      content: "";
+      background-color: -color(dark, 0.15);
+      z-index: 1;
+    }
 
-    img{
-      object-fit: cover;}}
+    img {
+      object-fit: cover;
+    }
+  }
 }

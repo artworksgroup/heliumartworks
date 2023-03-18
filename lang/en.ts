@@ -1,4 +1,4 @@
 export default {
-    hello: 'Hello',
-    home: 'Home',
-}
+  hello: "Hello",
+  home: "Home",
+};

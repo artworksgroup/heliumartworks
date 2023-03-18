@@ -10,7 +10,7 @@
         <p>Join our community of photographers and creatives.</p>
       </div>
       <div class="google flex">
-        <button class="button button--surface flex-1 flex">
+        <button class="button button--surface flex-1 flex" @click.prevent="">
           <GoogleIcon />
           <span>Sign in with google.</span>
         </button>

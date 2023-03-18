@@ -32,12 +32,12 @@
         </div>
         <div class="flex items-center">
           <NuxtLink class="flex items-center">
-            <iconCheck></iconCheck>
+            <CheckIcon />
             <span>FR</span>
           </NuxtLink>
           <NuxtLink class="flex items-center">
             <span>Help</span>
-            <iconCheck></iconCheck>
+            <CheckIcon />
           </NuxtLink>
           <UserAvatar class="cursor-pointer" @click="auth.logout"></UserAvatar>
         </div>
@@ -50,8 +50,9 @@
 </template>
 
 <script setup lang="ts">
-import { sidebarLinks } from "~/data/dashboard";
+import { buildSidebarLinks } from "~/data/dashboard";
 import { useAuthStore } from "~/stores/repositories/auth";
 
 const auth = useAuthStore();
+const sidebarLinks = buildSidebarLinks();
 </script>

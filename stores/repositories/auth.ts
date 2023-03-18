@@ -2,7 +2,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
 } from "firebase/auth";
 import { acceptHMRUpdate, defineStore } from "pinia";
 import firebase from "~/helpers/firebase";
