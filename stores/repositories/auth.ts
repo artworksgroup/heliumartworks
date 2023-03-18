@@ -86,7 +86,7 @@ export const useAuthStore = defineStore("auth", () => {
 
         onAuthSuccess();
       } else {
-        await navigateTo(localePath("auth"));
+        await navigateTo("auth");
       }
     });
 

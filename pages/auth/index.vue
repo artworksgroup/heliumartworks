@@ -23,7 +23,7 @@
       </div>
       <div class="inputs w-full">
         <div class="input">
-          <SmsIcon />
+          <IconSms />
           <input
             v-model="userCredentials.email"
             type="text"
@@ -32,7 +32,7 @@
           />
         </div>
         <div class="input">
-          <CheckIcon />
+          <IconCheck />
           <input
             v-model="userCredentials.password"
             type="password"

@@ -10,7 +10,7 @@
           v-for="(link, i) in sidebarLinks"
           :key="i"
           class="nav-item"
-          :to="localePath(link.to)"
+          to="dashboard/profile"
         >
           <div class="nav-item-content">
             <Component :is="link.icon"></Component>
@@ -56,6 +56,10 @@
 <script setup lang="ts">
 import { buildSidebarLinks } from "~/data/dashboard";
 import { useAuthStore } from "~/stores/repositories/auth";
+
+type SidebarLink = {
+  label: String;
+};
 
 const auth = useAuthStore();
 const localePath = useLocalePath();
