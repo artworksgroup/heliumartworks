@@ -1,8 +1,10 @@
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signOut,
+  signInWithPopup,
+  signOut
 } from "firebase/auth";
 import { acceptHMRUpdate, defineStore } from "pinia";
 import firebase from "~/helpers/firebase";
@@ -14,9 +16,15 @@ export type AuthCredentials = {
 };
 
 export const useAuthStore = defineStore("auth", () => {
+  const provider = new GoogleAuthProvider();
+  provider.setCustomParameters({
+    login_hint: "user@example.com",
+  });
+
   const user = ref<User | null>(null);
   const accessToken = ref<String | null>(null);
   const refreshToken = ref<String | null>(null);
+  const localePath = useLocalePath();
 
   const signIn = (credentials: AuthCredentials): Promise<any> => {
     return new Promise<void>((resolve, reject) =>
@@ -29,6 +37,30 @@ export const useAuthStore = defineStore("auth", () => {
         .catch((error: any) => reject(error.message))
     );
   };
+
+  const signInWithGoogle = () =>
+    signInWithPopup(firebase.auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+
+        accessToken.value = credential?.accessToken ?? null;
+        refreshToken.value = result.user.refreshToken;
+        user.value = new User(result.user.uid, result.user.email!);
+        onAuthSuccess();
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        // const email = error.customData.email;
+        // The AuthCredential type that was used.
+        // const credential = GoogleAuthProvider.credentialFromError(error);
+
+        console.log(
+          "🚀 ~ file: auth.ts:53 ~ useAuthStore ~ errorMessage:",
+          errorMessage
+        );
+      });
 
   const register = (data: AuthCredentials): Promise<any> => {
     return new Promise<void>((resolve, reject) =>
@@ -52,13 +84,23 @@ export const useAuthStore = defineStore("auth", () => {
         refreshToken.value = data.refreshToken;
         user.value = new User(data.uid, data.email);
 
-        await navigateTo(localePath("/dashboard/profile"));
+        onAuthSuccess();
       } else {
         await navigateTo(localePath("auth"));
       }
     });
 
-  return { user, signIn, register, logout, listenToFirebaseAuthStateChanges };
+  const onAuthSuccess = async () =>
+    await navigateTo(localePath("/dashboard/profile"));
+
+  return {
+    user,
+    signIn,
+    signInWithGoogle,
+    register,
+    logout,
+    listenToFirebaseAuthStateChanges,
+  };
 });
 
 if (import.meta.hot) {

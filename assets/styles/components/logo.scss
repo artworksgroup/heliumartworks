@@ -1,0 +1,13 @@
+.logo {
+  color: -color(on-surface);
+  font-weight: 600;
+
+  .logo {
+    height: 25px;
+    width: 25px;
+    background-color: -color(primary);
+    transform: rotate(45deg);
+    border-radius: 10px;
+    margin-right: 10px;
+  }
+}

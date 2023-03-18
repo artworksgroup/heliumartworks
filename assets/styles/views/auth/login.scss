@@ -30,14 +30,15 @@ $field_spacing: 10px;
     .actions,
     .google {
       .input,
-      button {
+      button,
+      .google--button {
         height: $field_size;
         border-radius: $field_corner_radius;
       }
     }
 
     .inputs .input,
-    .google button {
+    .google .google--button {
       padding: 0 15px;
       background-color: -color(surface);
     }
@@ -109,7 +110,7 @@ $field_spacing: 10px;
 
     .google {
       margin-top: 35px;
-      button {
+      .google--button {
         @apply flex items-center self-start;
         svg {
           margin-right: 10px;

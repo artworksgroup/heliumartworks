@@ -1,3 +1,5 @@
+$sidebar-padding-h: 25px;
+
 #Dashboard {
   height: 100vh;
   @apply flex overflow-hidden;
@@ -8,17 +10,27 @@
 
     .titlebar {
       height: 60px;
+      margin-bottom: 10px;
       @apply flex flex-row items-center;
     }
   }
 
   .sidebar {
-    width: 23%;
-    padding: 0 2%;
-    background-color: -color(surface);
+    width: 22%;
+    padding: 0 0 15px;
+    background-color: -color(background);
+    border-right: 1px solid -color(outline, 0.5);
+
+    .titlebar {
+      padding: 0 $sidebar-padding-h;
+    }
 
     .profile {
-      margin: 30px 0 50px;
+      // margin: 30px 0 50px;
+      margin: 0 $sidebar-padding-h;
+      background-color: -color(surface);
+      padding: 5px;
+      border-radius: 25px;
       @apply flex items-center;
 
       .infos {
@@ -29,17 +41,49 @@
 
     .nav {
       .nav-item {
-        padding: 15px 0;
-        @apply flex flex-row items-center;
+        padding: 0 $sidebar-padding-h;
+        @apply flex flex-col items-start;
 
-        svg {
-          margin-right: 20px;
+        &-content {
+          padding: 15px 0;
+          @apply flex flex-row items-center w-full;
+          svg {
+            height: 20px;
+            width: 20px;
+            margin-right: 20px;
 
-          path {
-            stroke: -color(on-background);
+            path {
+              stroke: -color(on-background);
+            }
+          }
+        }
+
+        &:hover,
+        &.router-link-active {
+          font-weight: 600;
+        }
+
+        &:hover {
+          color: -color(on-surface);
+          svg path {
+            stroke: -color(on-surface);
+          }
+        }
+
+        &.router-link-active {
+          color: -color(primary);
+          svg path {
+            stroke: -color(primary);
+          }
+
+          .nav-item-content {
+            background-color: -color(surface);
+            padding: 15px;
           }
         }
       }
+
+      @apply flex-1 m-0;
     }
   }
 

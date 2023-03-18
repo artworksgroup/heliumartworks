@@ -7,6 +7,8 @@ export default defineNuxtConfig({
 
   pages: true,
 
+  plugins: ["~/plugins/strings", "~/plugins/http"],
+
   components: [
     { path: "~/components/icons", pathPrefix: false, global: true },
     "~/components",

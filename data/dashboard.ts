@@ -1,14 +1,12 @@
-import type { RouteLocationRaw } from "vue-router";
-
 export type SidebarLink = {
   icon: any;
   label: String;
-  to: RouteLocationRaw;
+  to: string;
 };
 
 const buildSidebarLinks = (): Array<SidebarLink> => [
   {
-    to: "/dashboard/home",
+    to: "/dashboard",
     label: "home",
     icon: resolveComponent("HomeIcon"),
   },

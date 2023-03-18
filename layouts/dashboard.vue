@@ -1,16 +1,10 @@
 <template>
   <div id="Dashboard">
-    <div class="sidebar">
+    <div class="sidebar flex flex-col">
       <div class="titlebar">
         <AppLogo />
       </div>
-      <div class="profile">
-        <UserAvatar></UserAvatar>
-        <div class="infos">
-          <p class="full name">John doe</p>
-          <p class="full name">JohnDoe@5243</p>
-        </div>
-      </div>
+
       <div class="nav">
         <NuxtLink
           v-for="(link, i) in sidebarLinks"
@@ -18,9 +12,19 @@
           class="nav-item"
           :to="localePath(link.to)"
         >
-          <Component :is="link.icon"></Component>
-          <p class="label">{{ link.label }}</p>
+          <div class="nav-item-content">
+            <Component :is="link.icon"></Component>
+            <p class="label">{{ link.label }}</p>
+          </div>
         </NuxtLink>
+      </div>
+
+      <div class="profile">
+        <UserAvatar></UserAvatar>
+        <div class="infos">
+          <p class="full name">John doe</p>
+          <p class="full name">JohnDoe@5243</p>
+        </div>
       </div>
     </div>
     <div class="body">
@@ -54,5 +58,6 @@ import { buildSidebarLinks } from "~/data/dashboard";
 import { useAuthStore } from "~/stores/repositories/auth";
 
 const auth = useAuthStore();
+const localePath = useLocalePath();
 const sidebarLinks = buildSidebarLinks();
 </script>

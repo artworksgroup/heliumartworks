@@ -10,7 +10,10 @@
         <p>Join our community of photographers and creatives.</p>
       </div>
       <div class="google flex">
-        <button class="button button--surface flex-1 flex" @click.prevent="">
+        <button
+          class="button button--surface google--button flex-1 flex"
+          @click.prevent="auth.signInWithGoogle"
+        >
           <GoogleIcon />
           <span>Sign in with google.</span>
         </button>
@@ -55,11 +58,12 @@
 </template>
 
 <script setup lang="ts">
-import { emailIsValid } from "~/helpers/utils";
 import type { AuthCredentials } from "~/stores/repositories/auth";
 import { useAuthStore } from "~/stores/repositories/auth";
 
 const auth = useAuthStore();
+const localePath = useLocalePath();
+const { $isValidEmail } = useNuxtApp();
 
 const userCredentials = ref<AuthCredentials>({
   email: "",
@@ -70,7 +74,7 @@ const errors = ref<{ email: boolean; password: boolean }>();
 const credentialsAreValid = (): boolean => {
   if (
     userCredentials.value.email.length > 0 &&
-    emailIsValid(userCredentials.value.email) &&
+    $isValidEmail(userCredentials.value.email) &&
     userCredentials.value.password.length > 0
   ) {
     errors.value = {
@@ -80,7 +84,7 @@ const credentialsAreValid = (): boolean => {
     return true;
   } else if (
     (userCredentials.value.email.length === 0 ||
-      !emailIsValid(userCredentials.value.email)) &&
+      !$isValidEmail(userCredentials.value.email)) &&
     userCredentials.value.password.length > 0
   ) {
     errors.value = {
@@ -89,7 +93,7 @@ const credentialsAreValid = (): boolean => {
     };
   } else if (
     userCredentials.value.email.length > 0 &&
-    emailIsValid(userCredentials.value.email) &&
+    $isValidEmail(userCredentials.value.email) &&
     userCredentials.value.password.length === 0
   ) {
     errors.value = {
@@ -98,7 +102,7 @@ const credentialsAreValid = (): boolean => {
     };
   } else if (
     (userCredentials.value.email.length === 0 ||
-      !emailIsValid(userCredentials.value.email)) &&
+      !$isValidEmail(userCredentials.value.email)) &&
     userCredentials.value.password.length === 0
   ) {
     errors.value = {
@@ -118,7 +122,7 @@ const authenticate = async () => {
         });
       } else console.log(err);
     });
-  } else alert("invalid credentails");
+  } else alert("invalid credentials");
 };
 
 watch(
