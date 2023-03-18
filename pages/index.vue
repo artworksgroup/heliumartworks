@@ -1,17 +1,15 @@
 <template>
-    <div class="p-4">
-      <!-- Create a fancy card to welcome user -->
+  <div>
+    <ComingSoon />
+  </div>
+</template>
 
-      <div class="text-xl">{{$t('hello')}} To man Helium artworks dev {{ locale }} </div>
+<script >
+import ComingSoon from '~/components/ComingSoon.vue';
 
-      <div class="text-xl">{{$t('hello')}} To man this happen Helium artworks  {{ locale }} </div>
-
-    </div>
-  </template>
-  
-  
-  <script setup lang="ts">
-  const {locale} = useI18n();
-  </script>
-  
-  
+export default {
+  components: {
+    ComingSoon,
+  },
+};
+</script>

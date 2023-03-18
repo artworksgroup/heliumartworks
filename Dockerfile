@@ -1,11 +1,15 @@
-FROM alpine:3.16
+FROM node:19-alpine3.16
 
 ENV NODE_VERSION 19.7.0
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY . /app
 
-RUN yarn install --frozen-lockfile --production
+RUN yarn install
 
+RUN yarn build
 
+EXPOSE 3000
+
+CMD ["node", "./.output/server/index.mjs"]
