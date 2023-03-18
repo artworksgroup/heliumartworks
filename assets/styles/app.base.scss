@@ -1,22 +1,25 @@
-@import url('https://fonts.cdnfonts.com/css/space-grotesk');
-@import url('https://fonts.googleapis.com/css?family=Inter');
+@import "https://fonts.cdnfonts.com/css/space-grotesk";
+@import "https://fonts.googleapis.com/css?family=Inter";
 
-@import './app.colors';
-@import './app.vars';
-@import './utils/functions';
-@import './components/index';
+@import "./app.colors";
+@import "./app.vars";
+@import "./utils/functions";
+@import "./components/index";
 
-html, body {
+html,
+body {
   height: 100%;
   overflow: hidden !important;
-  &, & > * {
+
+  &,
+  & > * {
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
 }
 
-body{
-  font-family: 'Space Grotesk', sans-serif;
+body {
+  font-family: "Space Grotesk", sans-serif;
   font-size: -var(body-fs);
   font-weight: normal;
   font-style: normal;
@@ -27,42 +30,55 @@ body{
 
   ::selection {
     color: -color(light);
-    background: -color(primary, .4) !important;}
+    background: -color(primary, 0.4) !important;
+  }
 
-  .disable-selection{
+  .disable-selection {
     user-select: none !important;
-    -webkit-user-select: none !important;}
+  }
 
-  button, .button{
-    background-color: -color(primary, .25);
+  button,
+  .button {
+    background-color: -color(primary, 0.25);
 
-    &.button--primary{
+    &.button--primary {
       background: -color(color);
       color: -color(light);
-      transition: ease .3s;
+      transition: ease 0.3s;
 
-      &:hover, &.active{
+      &:hover,
+      &.active {
         box-shadow: -shadow(primary);
         transform: translateY(-3px);
-        transition: ease .3s;}}
+        transition: ease 0.3s;
+      }
+    }
 
-    &.button--flat{
-      background: -color(background)}
+    &.button--flat {
+      background: -color(background);
+    }
 
-    &.button--surface{
-      background-color: -color(surface)}}
+    &.button--surface {
+      background-color: -color(surface);
+    }
+  }
 
-  p{
-    margin: 0;}
+  p {
+    margin: 0;
+  }
 
-  input{
-    &:focus{
+  input {
+    &:focus {
       border: none;
-      outline: none;}}
+      outline: none;
+    }
+  }
 
-  svg.icon{
-    path{
-      stroke: -color(on-background);}}
-
-  @import './views/index';
+  svg.icon {
+    path {
+      stroke: -color(on-background);
+    }
+  }
 }
+
+@import "./views/index";

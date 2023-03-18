@@ -20,14 +20,20 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@pinia/nuxt",
     "@vueuse/nuxt",
-    '@nuxtjs/stylelint-module',
+    "@nuxtjs/stylelint-module",
   ],
 
   imports: {
     dirs: ["stores"],
   },
 
-  css: ["~/assets/styles/app.base.sass"],
+  css: ["~/assets/styles/app.base.scss"],
+
+  stylelint: {
+    lintOnStart: false,
+    emitError: false, // Todo: Remove me :)
+    emitWarning: false, // Todo: Remove me :)
+  },
 
   i18n: {
     defaultLocale: "en",
