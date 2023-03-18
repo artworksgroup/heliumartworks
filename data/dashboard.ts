@@ -10,47 +10,47 @@ const buildSidebarLinks = (): Array<SidebarLink> => [
   {
     to: "/dashboard/home",
     label: "home",
-    icon: resolveComponent("GoogleIcon"),
+    icon: resolveComponent("HomeIcon"),
   },
   {
     to: "dashboard-profile",
     label: "Medias",
-    icon: resolveComponent("SmsIcon"),
+    icon: resolveComponent("ImageIcon"),
   },
   {
     to: "/dashboard/profile",
     label: "Sells",
-    icon: resolveComponent("SmsIcon"),
+    icon: resolveComponent("ReceiptTextIcon"),
   },
   {
     to: "/dashboard/profile",
     label: "Downloads",
-    icon: resolveComponent("SmsIcon"),
+    icon: resolveComponent("ImportIcon"),
   },
   {
     to: "/dashboard/profile",
     label: "Profile",
-    icon: resolveComponent("SmsIcon"),
+    icon: resolveComponent("UserIcon"),
   },
   {
     to: "/dashboard/profile",
     label: "Settings",
-    icon: resolveComponent("SmsIcon"),
+    icon: resolveComponent("SettingIcon"),
   },
   {
     to: "/dashboard/profile",
     label: "Users",
-    icon: resolveComponent("SmsIcon"),
+    icon: resolveComponent("PeopleIcon"),
   },
   {
     to: "/dashboard/profile",
     label: "Moderators",
-    icon: resolveComponent("SmsIcon"),
+    icon: resolveComponent("CubeIcon"),
   },
   {
     to: "/dashboard/profile",
     label: "Tickets",
-    icon: resolveComponent("SmsIcon"),
+    icon: resolveComponent("MoreIcon2"),
   },
   {
     to: "/dashboard/profile",
