@@ -11,7 +11,7 @@ const buildSidebarLinks = (): Array<SidebarLink> => [
     icon: resolveComponent("HomeIcon"),
   },
   {
-    to: "dashboard-profile",
+    to: "/dashboard/medias",
     label: "Medias",
     icon: resolveComponent("ImageIcon"),
   },
@@ -21,17 +21,12 @@ const buildSidebarLinks = (): Array<SidebarLink> => [
     icon: resolveComponent("ReceiptTextIcon"),
   },
   {
-    to: "/dashboard/profile",
+    to: "/dashboard/downloads",
     label: "Downloads",
     icon: resolveComponent("ImportIcon"),
   },
   {
-    to: "/dashboard/profile",
-    label: "Profile",
-    icon: resolveComponent("UserIcon"),
-  },
-  {
-    to: "/dashboard/profile",
+    to: "/dashboard/settings",
     label: "Settings",
     icon: resolveComponent("SettingIcon"),
   },

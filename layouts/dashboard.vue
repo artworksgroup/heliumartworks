@@ -28,7 +28,7 @@
             <p class="s-info">Admin</p>
           </div>
         </div>
-        <button><VerifiedBadgeIcon></VerifiedBadgeIcon></button>
+        <button><SettingIcon /></button>
       </div>
     </div>
     <div class="body">

@@ -130,11 +130,12 @@ $titlebar-item-size: 45px;
         }
 
         .infos {
-          margin-left: 5px;
+          margin-left: 8px;
           @apply flex-1;
 
           .full_name {
             font-weight: 600;
+            color: -color(on-surface);
           }
 
           .s-info {
@@ -147,6 +148,14 @@ $titlebar-item-size: 45px;
         height: $sidebar-avatar-size + 5px;
         width: $sidebar-avatar-size + 5px;
         @apply justify-center;
+
+        svg {
+          height: 18px;
+          width: 18px;
+          path {
+            stroke: -color(on-background);
+          }
+        }
       }
     }
   }
