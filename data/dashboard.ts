@@ -35,7 +35,7 @@ const buildSidebarLinks = (): Array<SidebarLink> => [
     label: "Settings",
     icon: resolveComponent("SettingIcon"),
   },
-  {
+  /* {
     to: "/dashboard/profile",
     label: "Users",
     icon: resolveComponent("PeopleIcon"),
@@ -49,7 +49,7 @@ const buildSidebarLinks = (): Array<SidebarLink> => [
     to: "/dashboard/profile",
     label: "Tickets",
     icon: resolveComponent("MoreIcon2"),
-  },
+  }, */
   {
     to: "/dashboard/profile",
     label: "Administration",

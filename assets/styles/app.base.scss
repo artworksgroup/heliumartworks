@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import "https://fonts.cdnfonts.com/css/space-grotesk";
 @import "https://fonts.googleapis.com/css?family=Inter";
 
@@ -68,15 +70,27 @@ body {
   }
 
   input {
+    background-color: -color(background);
+
     &:focus {
       border: none;
       outline: none;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:focus {
+      transition: background-color 600000s 0s, color 600000s 0s;
     }
   }
 
   svg.icon {
     path {
       stroke: -color(on-background);
+    }
+
+    &.bulk path {
+      stroke: transparent;
+      fill: -color(on-background);
     }
   }
 }

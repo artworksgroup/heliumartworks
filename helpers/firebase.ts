@@ -8,4 +8,4 @@ const auth = getAuth(app);
 
 auth.languageCode = "en"; // Todo: Use website locale
 
-export default { app, auth: getAuth(app) };
+export default { app, auth };

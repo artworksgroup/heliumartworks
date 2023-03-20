@@ -1,4 +1,9 @@
 $sidebar-padding-h: 25px;
+$sidebar-nav-link-height: 50px;
+$sidebar-nav-link-space-between: 8px;
+$sidebar-avatar-size: 40px;
+
+$titlebar-item-size: 45px;
 
 #Dashboard {
   height: 100vh;
@@ -17,7 +22,7 @@ $sidebar-padding-h: 25px;
 
   .sidebar {
     width: 22%;
-    padding: 0 0 15px;
+    padding: 0 0 25px;
     background-color: -color(background);
     border-right: 1px solid -color(outline, 0.5);
 
@@ -25,32 +30,47 @@ $sidebar-padding-h: 25px;
       padding: 0 $sidebar-padding-h;
     }
 
-    .profile {
-      // margin: 30px 0 50px;
-      margin: 0 $sidebar-padding-h;
-      background-color: -color(surface);
-      padding: 5px;
-      border-radius: 25px;
-      @apply flex items-center;
-
-      .infos {
-        margin-left: 10px;
-        @apply flex-1;
-      }
-    }
-
     .nav {
+      @apply flex-1 m-0 relative;
+
+      .nav-indicator,
+      .nav-item .nav-item-content {
+        height: $sidebar-nav-link-height;
+      }
+
+      .nav-indicator {
+        width: 5px;
+
+        &,
+        &::before {
+          @apply absolute top-0 left-0;
+        }
+
+        &::before {
+          content: "";
+          height: 60%;
+          width: 100%;
+          top: 50%;
+          transform: translateY(-50%);
+          border-radius: 0 10px 10px 0;
+          background-color: -color(primary);
+        }
+      }
+
       .nav-item {
         padding: 0 $sidebar-padding-h;
         @apply flex flex-col items-start;
 
         &-content {
-          padding: 15px 0;
-          @apply flex flex-row items-center w-full;
+          transition: 0.3s;
+          border-radius: 50px;
+          padding: 0 5px;
+          @apply flex flex-row items-center;
+
           svg {
             height: 20px;
             width: 20px;
-            margin-right: 20px;
+            margin-right: 12px;
 
             path {
               stroke: -color(on-background);
@@ -58,9 +78,19 @@ $sidebar-padding-h: 25px;
           }
         }
 
+        &:not(:last-child) {
+          margin-bottom: $sidebar-nav-link-space-between;
+        }
+
         &:hover,
         &.router-link-active {
           font-weight: 600;
+
+          .nav-item-content {
+            transition: 0.3s;
+            background-color: -color(surface);
+            padding: 0 15px;
+          }
         }
 
         &:hover {
@@ -75,15 +105,49 @@ $sidebar-padding-h: 25px;
           svg path {
             stroke: -color(primary);
           }
+        }
+      }
+    }
 
-          .nav-item-content {
-            background-color: -color(surface);
-            padding: 15px;
+    .footer {
+      margin: 0 $sidebar-padding-h;
+
+      button,
+      .profile {
+        background-color: -color(surface);
+        border-radius: 25px;
+        @apply flex items-center;
+      }
+
+      .profile {
+        padding: 5px;
+        padding-right: 15px;
+        @apply self-start;
+
+        #UserAvatar {
+          height: $sidebar-avatar-size;
+          width: $sidebar-avatar-size;
+        }
+
+        .infos {
+          margin-left: 5px;
+          @apply flex-1;
+
+          .full_name {
+            font-weight: 600;
+          }
+
+          .s-info {
+            font-size: -var(small-fs);
           }
         }
       }
 
-      @apply flex-1 m-0;
+      button {
+        height: $sidebar-avatar-size + 5px;
+        width: $sidebar-avatar-size + 5px;
+        @apply justify-center;
+      }
     }
   }
 
@@ -91,8 +155,74 @@ $sidebar-padding-h: 25px;
     @apply flex-1;
 
     .titlebar,
-    .page {
-      padding: 0 5%;
+    .dashboard-page {
+      padding: 0 2%;
+    }
+
+    .titlebar {
+      .search-bar,
+      .options,
+      .avatar {
+        border-radius: 50px;
+      }
+
+      .search-bar,
+      .options {
+        height: $titlebar-item-size;
+        background-color: -color(surface);
+      }
+
+      .search-bar {
+        padding-left: 15px;
+        svg {
+          height: 18px;
+          width: 18px;
+        }
+        input {
+          padding: 0 15px;
+          background-color: -color(surface);
+        }
+      }
+
+      .options {
+        padding: 0 15px;
+
+        &,
+        .option {
+          @apply flex items-center;
+        }
+
+        .option-dev {
+          height: math.div($titlebar-item-size, 3);
+          width: 1px;
+          background-color: -color(outline);
+          margin: 0 15px;
+        }
+
+        .option {
+          .icon {
+            height: 16px;
+            width: 16px;
+            margin-right: 5px;
+          }
+        }
+      }
+
+      .avatar {
+        height: $titlebar-item-size - 5px;
+        width: $titlebar-item-size - 5px;
+        margin-left: 10px;
+
+        .verified_badge {
+          top: 5px;
+          left: auto;
+          right: -5px;
+        }
+      }
+    }
+
+    .dashboard-page {
+      @import "./home_page.scss";
     }
   }
 }

@@ -18,5 +18,7 @@ module.exports = {
     "@vue/eslint-config-prettier",
   ],
   plugins: [],
-  rules: {},
+  rules: {
+    "no-console": 0, // TODO: Remove for deployment
+  },
 };

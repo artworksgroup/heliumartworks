@@ -52,6 +52,7 @@ $field_spacing: 10px;
           background-color: transparent;
           color: -color(on-surface);
           @apply flex-1 h-full;
+
           &::placeholder {
             color: -color(on-background);
           }

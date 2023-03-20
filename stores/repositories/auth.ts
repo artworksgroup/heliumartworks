@@ -16,6 +16,7 @@ export type AuthCredentials = {
 };
 
 export const useAuthStore = defineStore("auth", () => {
+  const localePath = useLocalePath();
   const provider = new GoogleAuthProvider();
   provider.setCustomParameters({
     login_hint: "user@example.com",
@@ -24,7 +25,10 @@ export const useAuthStore = defineStore("auth", () => {
   const user = ref<User | null>(null);
   const accessToken = ref<String | null>(null);
   const refreshToken = ref<String | null>(null);
-  const localePath = useLocalePath();
+
+  const isAuthenticated = computed<boolean>(
+    () => user != null && accessToken != null && refreshToken != null
+  );
 
   const signIn = (credentials: AuthCredentials): Promise<any> => {
     return new Promise<void>((resolve, reject) =>
@@ -94,6 +98,7 @@ export const useAuthStore = defineStore("auth", () => {
     await navigateTo(localePath("/dashboard/profile"));
 
   return {
+    isAuthenticated,
     user,
     signIn,
     signInWithGoogle,

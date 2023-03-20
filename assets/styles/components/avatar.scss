@@ -1,0 +1,32 @@
+#UserAvatar {
+  height: 45px;
+  width: 45px;
+  @apply rounded-full relative;
+
+  img {
+    object-fit: cover;
+    @apply absolute top-0 left-0 h-full w-full rounded-full;
+  }
+
+  .verified_badge {
+    height: 18px;
+    width: 18px;
+    left: -5px;
+    @apply absolute top-0 z-10;
+
+    path {
+      fill: -color(light);
+    }
+  }
+
+  &.small {
+    height: 35px;
+    width: 35px;
+
+    .verified_badge {
+      height: 15px;
+      width: 15px;
+      left: -5px;
+    }
+  }
+}

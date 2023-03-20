@@ -6,4 +6,8 @@
 
 <script setup lang="ts">
 const layout = "dashboard";
+
+definePageMeta({
+  middleware: ["auth"],
+});
 </script>

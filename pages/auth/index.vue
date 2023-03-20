@@ -23,20 +23,21 @@
       </div>
       <div class="inputs w-full">
         <div class="input">
-          <IconSms />
+          <SmsIcon />
           <input
             v-model="userCredentials.email"
             type="text"
             placeholder="Email."
-            autocomplete="disabled"
+            autocomplete="email"
           />
         </div>
         <div class="input">
-          <IconCheck />
+          <CheckIcon />
           <input
             v-model="userCredentials.password"
             type="password"
             placeholder="Password."
+            autocomplete="current-password"
           />
         </div>
       </div>
@@ -62,7 +63,6 @@ import type { AuthCredentials } from "~/stores/repositories/auth";
 import { useAuthStore } from "~/stores/repositories/auth";
 
 const auth = useAuthStore();
-const localePath = useLocalePath();
 const { $isValidEmail } = useNuxtApp();
 
 const userCredentials = ref<AuthCredentials>({
