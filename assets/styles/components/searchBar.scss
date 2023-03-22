@@ -1,0 +1,14 @@
+.search-bar {
+  height: 65px;
+  padding-left: 15px;
+  border-radius: 50px;
+  background-color: -color(surface);
+  svg {
+    height: 18px;
+    width: 18px;
+  }
+  input {
+    padding: 0 15px;
+    background-color: -color(surface);
+  }
+}

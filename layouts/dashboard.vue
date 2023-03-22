@@ -24,7 +24,7 @@
         <div class="profile">
           <UserAvatar></UserAvatar>
           <div class="infos">
-            <p class="full_name">{{ auth.user?.email }}</p>
+            <p class="full_name">John doe</p>
             <p class="s-info">Admin</p>
           </div>
         </div>
@@ -33,11 +33,8 @@
     </div>
     <div class="body">
       <div class="titlebar">
-        <div class="search-bar flex items-center overflow-hidden">
-          <MessagesIcon />
-          <input type="search" class="h-full flex-1" placeholder="Search..." />
-        </div>
-        <div class="options ml-auto">
+        <SearchBar />
+        <div class="options button button--outline ml-auto">
           <NuxtLink class="option">
             <span>Fr</span>
           </NuxtLink>
@@ -59,6 +56,13 @@ import { buildSidebarLinks } from "~/data/dashboard";
 import { useAuthStore } from "~/stores/repositories/auth";
 
 const auth = useAuthStore();
+// const router = useRouter();
 const localePath = useLocalePath();
 const sidebarLinks = buildSidebarLinks();
+
+/* const currentRoute = computed(() =>
+  sidebarLinks.find(
+    (link) => localePath(link.to) === router.currentRoute.value.path
+  )
+); */
 </script>

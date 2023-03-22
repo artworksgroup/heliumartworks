@@ -1,9 +1,12 @@
 $sidebar-padding-h: 25px;
-$sidebar-nav-link-height: 50px;
-$sidebar-nav-link-space-between: 8px;
+$sidebar-nav-link-height: 55px;
+$sidebar-nav-link-space-between: 10px;
 $sidebar-avatar-size: 40px;
+$sidebar-item-count: 5;
+$sidebar-indicator-transition: top 0.2s ease-in;
 
-$titlebar-item-size: 45px;
+$titlebar-size: 65px;
+$titlebar-item-size: 48px;
 
 #Dashboard {
   height: 100vh;
@@ -14,9 +17,9 @@ $titlebar-item-size: 45px;
     @apply h-full;
 
     .titlebar {
-      height: 60px;
+      height: $titlebar-size;
       margin-bottom: 10px;
-      @apply flex flex-row items-center;
+      @apply flex items-center;
     }
   }
 
@@ -24,7 +27,7 @@ $titlebar-item-size: 45px;
     width: 22%;
     padding: 0 0 25px;
     background-color: -color(background);
-    border-right: 1px solid -color(outline, 0.5);
+    border-right: 1px solid -color(outline, 0.35);
 
     .titlebar {
       padding: 0 $sidebar-padding-h;
@@ -39,7 +42,8 @@ $titlebar-item-size: 45px;
       }
 
       .nav-indicator {
-        width: 5px;
+        width: 4px;
+        transition: $sidebar-indicator-transition;
 
         &,
         &::before {
@@ -48,11 +52,11 @@ $titlebar-item-size: 45px;
 
         &::before {
           content: "";
-          height: 60%;
+          height: 50%;
           width: 100%;
           top: 50%;
           transform: translateY(-50%);
-          border-radius: 0 10px 10px 0;
+          border-radius: 0 15px 15px 0;
           background-color: -color(primary);
         }
       }
@@ -83,13 +87,14 @@ $titlebar-item-size: 45px;
         }
 
         &:hover,
-        &.router-link-active {
+        &.router-link-exact-active,
+        &.router-link-exact-active.router-link-active {
           font-weight: 600;
 
           .nav-item-content {
             transition: 0.3s;
             background-color: -color(surface);
-            padding: 0 15px;
+            padding: 0 25px;
           }
         }
 
@@ -100,10 +105,22 @@ $titlebar-item-size: 45px;
           }
         }
 
-        &.router-link-active {
+        &.router-link-exact-active,
+        &.router-link-active.router-link-exact-active {
           color: -color(primary);
           svg path {
             stroke: -color(primary);
+          }
+
+          @for $i from 0 through $sidebar-item-count {
+            &:nth-child(#{$i}) ~ .nav-indicator {
+              top: ($sidebar-nav-link-height * ($i - 1)) +
+                ($sidebar-nav-link-space-between * ($i - 1)) !important;
+              transition: $sidebar-indicator-transition;
+              &::before {
+                background-color: -color("primary");
+              }
+            }
           }
         }
       }
@@ -169,7 +186,12 @@ $titlebar-item-size: 45px;
     }
 
     .titlebar {
-      .search-bar,
+      .dashboard-page-title {
+        font-size: -var(title-fs);
+        font-weight: 600;
+        color: -color(on-surface);
+      }
+
       .options,
       .avatar {
         border-radius: 50px;
@@ -178,23 +200,11 @@ $titlebar-item-size: 45px;
       .search-bar,
       .options {
         height: $titlebar-item-size;
-        background-color: -color(surface);
-      }
-
-      .search-bar {
-        padding-left: 15px;
-        svg {
-          height: 18px;
-          width: 18px;
-        }
-        input {
-          padding: 0 15px;
-          background-color: -color(surface);
-        }
       }
 
       .options {
         padding: 0 15px;
+        border: 2px solid -color(surface);
 
         &,
         .option {
@@ -203,7 +213,7 @@ $titlebar-item-size: 45px;
 
         .option-dev {
           height: math.div($titlebar-item-size, 3);
-          width: 1px;
+          width: 2px;
           background-color: -color(outline);
           margin: 0 15px;
         }
@@ -231,7 +241,20 @@ $titlebar-item-size: 45px;
     }
 
     .dashboard-page {
+      .dashboard-page-title {
+        font-size: 45px;
+        font-weight: 600;
+        color: -color(on-surface);
+      }
+
+      .button,
+      .search-bar {
+        height: -var(dashboard-button-size);
+        padding: 0 20px;
+      }
+
       @import "./home_page.scss";
+      @import "./medias_page.scss";
     }
   }
 }

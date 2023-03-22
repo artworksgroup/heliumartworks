@@ -94,8 +94,7 @@ export const useAuthStore = defineStore("auth", () => {
       }
     });
 
-  const onAuthSuccess = async () =>
-    await navigateTo(localePath("/dashboard/profile"));
+  const onAuthSuccess = async () => await navigateTo(localePath("/dashboard"));
 
   return {
     isAuthenticated,

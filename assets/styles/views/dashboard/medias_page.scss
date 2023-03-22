@@ -1,0 +1,20 @@
+&.medias {
+  .sep {
+    height: 1px;
+    background-color: -color(outline, 0.5);
+    margin: 15px 0 0;
+  }
+
+  .header {
+    .tabs {
+      padding: 15px 0;
+    }
+
+    button {
+      border-radius: 50px;
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+}

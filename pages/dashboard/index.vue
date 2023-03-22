@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-page home">
     <div class="header">
-      <h1>Welcome back, john.</h1>
+      <h1 class="dashboard-page-title">Welcome back, john.</h1>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
     </div>
     <div class="stats">

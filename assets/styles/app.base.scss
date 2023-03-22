@@ -63,6 +63,11 @@ body {
     &.button--surface {
       background-color: -color(surface);
     }
+
+    &.button--outline {
+      background: -color(background);
+      border: 2px solid -color(surface);
+    }
   }
 
   p {

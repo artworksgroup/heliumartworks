@@ -63,4 +63,12 @@ export default defineNuxtConfig({
   eslint: {
     lintOnStart: false,
   },
+
+  vite: {
+    server: {
+      watch: {
+        usePolling: true,
+      },
+    },
+  },
 });
