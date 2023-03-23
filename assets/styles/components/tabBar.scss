@@ -18,16 +18,18 @@
     }
 
     &:hover,
-    &.tab-active {
+    &.router-link-exact-active,
+    &.router-link-exact-active.router-link-active {
       transition: 0.3s;
-      font-weight: bold;
     }
 
     &:hover {
       color: -color(on-surface);
     }
 
-    &.tab-active {
+    &.router-link-exact-active,
+    &.router-link-exact-active.router-link-active {
+      font-weight: bold;
       color: -color(primary);
     }
   }

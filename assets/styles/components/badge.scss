@@ -1,0 +1,7 @@
+.badge {
+  background: -color(primary);
+  height: 25px;
+  min-width: 5px;
+  padding: 0 10px;
+  @apply rounded-full text-xs flex items-center justify-center;
+}
