@@ -18,9 +18,7 @@ export type AuthCredentials = {
 export const useAuthStore = defineStore("auth", () => {
   const localePath = useLocalePath();
   const provider = new GoogleAuthProvider();
-  provider.setCustomParameters({
-    login_hint: "user@example.com",
-  });
+  provider.setCustomParameters({});
 
   const user = ref<User | null>(null);
   const accessToken = ref<String | null>(null);
@@ -90,7 +88,7 @@ export const useAuthStore = defineStore("auth", () => {
 
         onAuthSuccess();
       } else {
-        await navigateTo("auth");
+        await navigateTo(localePath("auth"));
       }
     });
 
