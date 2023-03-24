@@ -71,7 +71,7 @@ const props = defineProps({
   alert: { type: Boolean, default: false },
   blur: { type: Boolean, default: false },
   side: {
-    type: [String, undefined, null],
+    type: [string, undefined, null],
     default: undefined,
     validator: () => ["left", "right"].includes(value),
   },

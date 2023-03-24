@@ -2,22 +2,22 @@ import { AxiosResponse } from "axios";
 import { decodeHttpError, http } from "~/plugins/http";
 
 export default class User {
-  public firebase_uid: String;
-  public email: String;
+  public firebase_uid: string;
+  public email: string;
   public attributes: {
-    id: String;
-    full_name: String;
-    username: String;
-    role: String;
-    profile_image?: String;
-    background_image?: String;
+    id: string;
+    full_name: string;
+    username: string;
+    role: string;
+    profile_image?: string;
+    background_image?: string;
     balance: number;
     credits: number;
     is_active: boolean;
     is_verified: boolean;
   } | null;
 
-  constructor(uid: String, email: String) {
+  constructor(uid: string, email: string) {
     this.firebase_uid = uid;
     this.email = email;
     this.attributes = null;
@@ -37,9 +37,10 @@ export default class User {
           resolve();
         })
         .catch((err) => {
-          if (createIfNotFound)
+          // Create a new user
+          if (createIfNotFound) {
             this.register().catch((err) => reject(decodeHttpError(err)));
-          else reject(decodeHttpError(err));
+          } else reject(decodeHttpError(err));
         })
     );
   }

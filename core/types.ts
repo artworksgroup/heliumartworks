@@ -1,7 +1,7 @@
 import type {
-  ComputedOptions,
-  ConcreteComponent,
-  MethodOptions
+    ComputedOptions,
+    ConcreteComponent,
+    MethodOptions
 } from "nuxt/dist/app/compat/capi";
 
 export type NavItem = {
@@ -9,6 +9,6 @@ export type NavItem = {
   icon?:
     | string
     | ConcreteComponent<{}, any, any, ComputedOptions, MethodOptions>;
-  label: String;
+  label: string;
   badgeCount?: number;
 };

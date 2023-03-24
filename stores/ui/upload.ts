@@ -1,10 +1,9 @@
 import { defineStore } from "pinia";
 import { useMediasStore } from "../repositories/medias";
+import { UploadedMedia, MediaTypes } from "~/models/media";
 
 export const useUploaderStore = defineStore("upload", () => {
   const medias = useMediasStore();
-
-  let timer: NodeJS.Timer;
 
   const file = ref<File | null>(null);
   const uploadProgress = ref<number>(0);
@@ -36,27 +35,26 @@ export const useUploaderStore = defineStore("upload", () => {
     else console.error("Cannot load preview !!!");
   };
 
-  const cancelUpload = (deleteFromServer = false) => {
-    clearInterval(timer);
+  const cancelUpload = () => {
     removeFile();
-
-    if (uploadInProgess && deleteFromServer) medias.remove();
-
     uploadProgress.value = 0;
   };
 
-  const upload = () => {
-    let elapsedTime = -1;
-    timer = setInterval(() => {
-      if (uploadProgress.value >= 100) {
-        cancelUpload();
-        medias.upload();
-      } else {
-        elapsedTime++;
-        uploadProgress.value = Math.round((100 * elapsedTime) / 5000);
-      }
-    }, 5);
-  };
+  const upload = (): Promise<void> =>
+    new Promise((resolve, reject) =>
+      medias
+        .upload(
+          new UploadedMedia(file.value!.name, MediaTypes.Photos, file.value!),
+          (progress) => {
+            uploadProgress.value = progress;
+          }
+        )
+        .then(() => resolve())
+        .catch((err) => {
+          cancelUpload();
+          reject(err);
+        })
+    );
 
   return {
     hasFile,
@@ -66,6 +64,7 @@ export const useUploaderStore = defineStore("upload", () => {
     getPreview,
     upload,
     uploadProgress,
+    uploadInProgess,
     cancelUpload,
   };
 });

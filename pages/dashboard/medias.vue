@@ -54,6 +54,10 @@ const tabBarItems = ref<Array<NavItem>>([
 const triggerFileUploader = () =>
   document.getElementById("mediaFileUploader")?.click();
 
+onMounted(() => {
+  medias.getAll();
+});
+
 watch(
   () => medias.waitingMedias,
   () => {

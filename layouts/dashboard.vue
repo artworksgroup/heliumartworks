@@ -24,8 +24,8 @@
         <div class="profile">
           <UserAvatar></UserAvatar>
           <div class="infos">
-            <p class="full_name">John doe</p>
-            <p class="s-info">Admin</p>
+            <p class="full_name">{{ auth.user?.attributes?.full_name }}</p>
+            <p class="s-info">{{ auth.user?.attributes?.role }}</p>
           </div>
         </div>
         <button><SettingIcon /></button>

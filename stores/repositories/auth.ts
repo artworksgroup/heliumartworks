@@ -23,8 +23,8 @@ export const useAuthStore = defineStore("auth", () => {
   provider.setCustomParameters({});
 
   const user = ref<User | null>(null);
-  const accessToken = ref<String | null>(null);
-  const refreshToken = ref<String | null>(null);
+  const accessToken = ref<string | null>(null);
+  const refreshToken = ref<string | null>(null);
 
   const isAuthenticated = computed<boolean>(
     () => user != null && accessToken != null && refreshToken != null

@@ -39,8 +39,12 @@ const uploader = useUploaderStore();
 
 watch(
   () => uploader.hasFile,
-  (value) => {
-    if (value) uploader.upload();
+  async (value) => {
+    if (value) {
+      await uploader.upload().catch((err) => {
+        console.log(err);
+      });
+    }
   }
 );
 </script>
