@@ -1,3 +1,4 @@
+import { FirebaseError } from "firebase/app";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -17,6 +18,7 @@ export type AuthCredentials = {
 
 export const useAuthStore = defineStore("auth", () => {
   const localePath = useLocalePath();
+
   const provider = new GoogleAuthProvider();
   provider.setCustomParameters({});
 
@@ -28,71 +30,86 @@ export const useAuthStore = defineStore("auth", () => {
     () => user != null && accessToken != null && refreshToken != null
   );
 
-  const signIn = (credentials: AuthCredentials): Promise<any> => {
-    return new Promise<void>((resolve, reject) =>
+  /**
+   * Asynchronously signs in using an email and password.
+   * @param credentials: { email: string; password: string; }
+   * @returns Promise<void | FirebaseError>
+   */
+  const signIn = (credentials: AuthCredentials): Promise<void> =>
+    new Promise<void>((resolve, reject) =>
       signInWithEmailAndPassword(
         firebase.auth,
         credentials.email,
         credentials.password
       )
         .then(() => resolve())
-        .catch((error: any) => reject(error.message))
+        .catch((error: FirebaseError) => reject(error))
     );
-  };
 
-  const signInWithGoogle = () =>
-    signInWithPopup(firebase.auth, provider)
-      .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
+  /**
+   * Authenticate Using Google.
+   * @returns Promise<void | FirebaseError>
+   */
+  const signInWithGoogle = (): Promise<void> =>
+    new Promise<void>((resolve, reject) =>
+      signInWithPopup(firebase.auth, provider)
+        .then(() => resolve())
+        .catch((error: FirebaseError) => reject(error))
+    );
 
-        accessToken.value = credential?.accessToken ?? null;
-        refreshToken.value = result.user.refreshToken;
-        user.value = new User(result.user.uid, result.user.email!);
-        onAuthSuccess();
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        // const email = error.customData.email;
-        // The AuthCredential type that was used.
-        // const credential = GoogleAuthProvider.credentialFromError(error);
-
-        console.log(
-          "🚀 ~ file: auth.ts:53 ~ useAuthStore ~ errorMessage:",
-          errorMessage
-        );
-      });
-
-  const register = (data: AuthCredentials): Promise<any> => {
-    return new Promise<void>((resolve, reject) =>
+  /**
+   * Creates a new user account associated with the specified email address and password.
+   * @param data: { email: string; password: string; }
+   * @returns Promise<void | FirebaseError>
+   */
+  const register = (data: AuthCredentials): Promise<any> =>
+    new Promise<void>((resolve, reject) =>
       createUserWithEmailAndPassword(firebase.auth, data.email, data.password)
         .then(() => resolve())
-        .catch((error: any) => reject(error.message))
+        .catch((error: FirebaseError) => reject(error))
     );
-  };
 
-  const logout = () =>
-    signOut(firebase.auth)
-      .then(async () => await navigateTo("/fr/auth"))
-      .catch((error) => {
-        console.log(error);
-      });
-
+  /**
+   * Handle user's sign-in state changes.
+   */
   const listenToFirebaseAuthStateChanges = () =>
     onAuthStateChanged(firebase.auth, async (data: any) => {
+      console.log("Auth state changed", data);
       if (data) {
         accessToken.value = data.accessToken;
         refreshToken.value = data.refreshToken;
         user.value = new User(data.uid, data.email);
 
-        onAuthSuccess();
+        /**
+         * Since this event is triggered when user login or register,
+         * we check if user exist in order to know which action will be the next one.
+         * - Creation request if user doesn't exist.
+         * - Access user data if user is already registered.
+         */
+        await user.value
+          .refresh({ createIfNotFound: true })
+          .then(async () => await navigateTo(localePath("/dashboard")))
+          .catch(async (err) => {
+            console.log(
+              "🚀 ~ file: auth.ts:90 ~ onAuthStateChanged ~ err:",
+              err
+            );
+            await navigateTo(localePath("/dashboard"));
+          });
       } else {
-        await navigateTo(localePath("auth"));
+        await navigateTo(localePath("/auth"));
       }
     });
 
-  const onAuthSuccess = async () => await navigateTo(localePath("/dashboard"));
+  /**
+   * Signs out the current user.
+   */
+  const logout = () =>
+    signOut(firebase.auth)
+      .then(async () => await navigateTo("/fr/auth"))
+      .catch((error: FirebaseError) => {
+        console.log(error);
+      });
 
   return {
     isAuthenticated,
